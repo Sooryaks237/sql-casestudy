@@ -183,7 +183,7 @@ SELECT * FROM `productlines` LIMIT 0, 5;
 
 -- Questions:
 
--- Q-6: Insert the following two rows in the 'customers' table.
+-- Q-1: Insert the following two rows in the 'customers' table.
 -- (495,'Diecast Collectables','Franco','Valarie','Boston','MA','51003','USA','1188',85100),
 -- (496,'Kelly\'s Gift Shop','Snowden','Tony','Auckland  ','NULL','NULL','New Zealand','1612',110000)
 insert into customers values
@@ -191,64 +191,64 @@ insert into customers values
 (496,'Kelly\'s Gift Shop','Snowden','Tony','Auckland  ','NULL','NULL','New Zealand','1612',110000);
 
 
--- Q-7: In the "employees" table there are some entries where 'SR' is written instead of 'Sales Rep' where office code is equal to 4.
+-- Q-2: In the "employees" table there are some entries where 'SR' is written instead of 'Sales Rep' where office code is equal to 4.
 -- Update the 'employees' table by inserting a job title as 'Sales Rep' where office code is equal to 4.
 update employees 
 set jobTitle='Sales Rep' where officeCode=4;
 select * from employees;
 
 
--- Insert the following entry into the employee table.
+-- Q-3: Insert the following entry into the employee table.
 insert into employees 
 values
 (1102, 'Bondur', 'Gerard', 'x5408', 'gbondur@classicmodelcars.com', 4, '1056', 'Sale Manager(EMEA)');
 
--- Q-8: There is no product under category of boat. Hence, delete the Boat entry from productlines table.
+-- Q-4: There is no product under category of boat. Hence, delete the Boat entry from productlines table.
 delete from productlines where productLine='Boats';
 select * from productlines;
 
 
--- Q-9: Convert the 'quantityOrdered' column's data type into int from varchar.
+-- Q-5: Convert the 'quantityOrdered' column's data type into int from varchar.
 alter table orderdetails 
 modify column quantityOrdered int;
 describe orderdetails;
 
--- Q-10: Print the employees with the job title “Sales Rep”. 
+-- Q-6: Print the employees with the job title “Sales Rep”. 
 -- What is the first name of the employee that appears on the top after applying this query?
 select firstName from employees where jobTitle='Sales Rep';
 
--- Q-10: Find the total number of employees from the 'employees’ table and alias it as "Total_Employees".
+-- Q-7: Find the total number of employees from the 'employees’ table and alias it as "Total_Employees".
 select count(*) as Total_Employees from employees;
 
--- Q-10: How many customers belongs to Australia? also alias it as "Australia_Customers".
+-- Q-8: How many customers belongs to Australia? also alias it as "Australia_Customers".
 select count(*) as Australia_Customers from customers where country='Australia';
 
 
--- Q-11: Print the quantity in stock for "Red Start Diecast" product vendors with product line is "Vintage Cars" from the table "products".
+-- Q-9: Print the quantity in stock for "Red Start Diecast" product vendors with product line is "Vintage Cars" from the table "products".
 select sum(quantityInStock) from products
 where productVendor='Red Start Diecast' and productLine='Vintage Cars';
 
--- Q-11: Count the total number of orders that has not been shipped yet in the "orders" table. 
+-- Q-10: Count the total number of orders that has not been shipped yet in the "orders" table. 
 select count(*) from orders where status!='Shipped';
 
 
--- Q-12: Count the entries in "orderdetails" table with "productCode" starts with S18 and "priceEach" greater than 150.
+-- Q-11: Count the entries in "orderdetails" table with "productCode" starts with S18 and "priceEach" greater than 150.
 select count(*) from orderdetails
 where productCode like 'S18%' and priceEach>150;
 
 
--- Q- 13: What are the top three countries which have the maximum number of customers?
+-- Q- 12: What are the top three countries which have the maximum number of customers?
 select country, count(customerNumber) as customer_count from customers
 group by 1 order by 2 desc
 limit 3;
 
 
--- Q-14: What is the average credit limit for Singapore from "customers" table?
+-- Q-13: What is the average credit limit for Singapore from "customers" table?
 select country, avg(creditLimit) as credit_limit from customers
 where country='Singapore';
 
 
--- Q-15: What is the total amount to be paid by the customer named as “Euro+ Shopping Channel”?
+-- Q-14: What is the total amount to be paid by the customer named as “Euro+ Shopping Channel”?
 -- You need to use the “customers” and “payments” tables to answer this question.
 select customerNumber, customerName from customers
 where customerName='Euro+ Shopping Channel';
@@ -256,7 +256,7 @@ select customerNumber, sum(amount) as total_amount from payments
 where customerNumber=141;
 
 
--- Q-16: Which month has recieved the maximum aggragated payments from the customers? 
+-- Q-15: Which month has recieved the maximum aggragated payments from the customers? 
 -- Q-16: What is the aggregated value of the payment recieved from that month?
 select month(paymentDate) as paymentmonth, sum(amount) as totalamount from payments 
 group by 1 order by 2 desc limit 1;
