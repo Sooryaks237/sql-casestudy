@@ -159,6 +159,19 @@ insert into customers values
 (495,'Diecast Collectables','Franco','Valarie','Boston','MA','51003','USA','1188',85100),
 (496,'Kelly\'s Gift Shop','Snowden','Tony','Auckland  ','NULL','NULL','New Zealand','1612',110000);
 
+-- Q-7: In the "employees" table there are some entries where 'SR' is written instead of 'Sales Rep' where office code is equal to 4.
+-- Update the 'employees' table by inserting a job title as 'Sales Rep' where office code is equal to 4.
+update employees 
+set jobTitle='Sales Rep' where officeCode=4;
+
+-- Insert the following entry into the employee table.
+insert into employees 
+values
+(1102, 'Bondur', 'Gerard', 'x5408', 'gbondur@classicmodelcars.com', 4, '1056', 'Sale Manager(EMEA)');
+
+-- Q-8: There is no product under category of boat. Hence, delete the Boat entry from productlines table.
+delete from productlines where productLine='Boats';
+	
 select * from employees;
 
 select * from productlines;
