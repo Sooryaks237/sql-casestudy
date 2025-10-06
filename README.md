@@ -35,30 +35,39 @@ Build a relational schema for a company and answer business questions using SQL�
 - **Type normalization:**  
   ```sql
   ALTER TABLE orderdetails MODIFY COLUMN quantityOrdered INT;
+---
+
 ## Files
 
 - `01_schema.sql` — schema (DDL): database creation and table definitions
 - `02_seed.sql` — data (DML): insert statements for populating tables
 
-## Quick start (MySQL/MariaDB)
+---
 
-```bash
-# 1) Create schema & tables
-mysql -u <user> -p < 01_schema.sql
+## ✅ Data Quality Fixes
+- Mixed data types for numeric fields → converted to INT.
+- Date consistency: shippedDate stored as text → should be DATE.
+- Text “NULL” replaced with real NULL.
 
-# 2) Load data
-mysql -u <user> -p < 02_seed.sql
-```
+---
 
-> Ensure that MySQL/MariaDB server is running before executing the scripts.
+## 📈 Business Outcomes
+- Quick answers to who/where/what questions (top countries, vendors, shipment status).
+- Risk & exposure visibility (credit limits by region/rep).
+- Finance insights (peak payment month, customer-level payments).
+- Operational readiness (remaining stock after orders).
 
-## GitHub: add & push
+---
 
-```bash
-git init
-git add 01_schema.sql 02_seed.sql README.md
-git commit -m "Add SQL Case Study - Customer Analytics schema and data"
-git branch -M main
-git remote add origin https://github.com/<your-user>/<your-repo>.git
-git push -u origin main
-```
+## 🚀 Future Enhancements
+- Add indexes on frequently queried columns.
+- Convert all date-like text to DATE/DATETIME.
+- Create reusable views (vw_customer_payments, vw_unshipped_orders).
+- Add CHECK constraints for positive numeric values.
+
+---
+## 📫 Connect with Me  
+- [LinkedIn](https://www.linkedin.com/in/soorya-k-s-/)  
+- 📧 Email: **sooryaks552@gmail.com*
+⭐️ From [Sooryaks237](https://github.com/Sooryaks237)
+---
